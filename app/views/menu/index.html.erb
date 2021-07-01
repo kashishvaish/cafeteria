@@ -1,0 +1,17 @@
+<main class="MenuPageMain">
+  <h1 class="MenuPage-title">Menu</h1>
+  <% MenuCategory.all().each do |category| %>
+    <div calss="MenuPage-category">
+      <%= category.name %>
+    </div>
+    <% MenuItem.where(menu_category_id: category).each do |item| %>
+      <div calss="MenuPageItem-name">
+        <%= item.name %>
+      </div>
+      <div calss="MenuPageItem-details">
+        <%= item.description %>
+        <%= item.price %>
+      </div>
+    <% end %>
+  <% end %>
+</main>

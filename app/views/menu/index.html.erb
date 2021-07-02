@@ -1,5 +1,13 @@
 <div class="MenuPageMain">
-  <h1 class="MenuPage-title">Menu</h1>
+  <div class="MenuPage-header">
+    <div class="MenuPage-title">Menu</div>
+    <div class="MenuPage-controls">
+      <% if @current_user %>
+        <%= @current_user.name %>
+        <%= link_to "Sign-out", destroy_sessions_path, method: "delete" %>
+      <% end %>
+    </div>
+  </div>
   <% MenuCategory.all().each do |category| %>
     <div class="MenuPage-category">
       <%= category.name %>

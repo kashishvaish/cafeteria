@@ -1,0 +1,47 @@
+.MenuPage-title {
+  font-size: 30px;
+  background-color: #3d000e;
+  color: #f7c7d2;
+  padding: 10px;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+.MenuPage-category {
+  font-size: 20px;
+  color: #ab0e14;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.MenuPageItem {
+  font-size: 16px;
+  color: #56111d;
+  background-color: #f7c7d2;
+  padding: 1%;
+  margin-left: 25px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.AddToCart {
+  background-color: #006400;
+  color: #ffffff;
+}
+
+.MenuPageItem-details {
+  display: flex;
+  margin-left: 35px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.MenuItem-description {
+  width: 65%;
+}
+
+.MenuItem-price {
+  width: 30%;
+  text-align: right;
+}

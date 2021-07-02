@@ -18,6 +18,14 @@
   font-weight: bolder;
 }
 
+.MenuPage-container {
+  display: flex;
+}
+
+.Menu {
+  width: 70%;
+}
+
 .MenuPage-category {
   font-size: 20px;
   color: #ab0e14;
@@ -39,6 +47,12 @@
 .AddToCart {
   background-color: #006400;
   color: #ffffff;
+  font-size: larger;
+  margin-left: 5px;
+}
+
+.Menuitem-quantityButtons {
+  display: flex;
 }
 
 .MenuPageItem-details {
@@ -55,4 +69,18 @@
 .MenuItem-price {
   width: 30%;
   text-align: right;
+}
+
+.Cart {
+  width: 30%;
+}
+
+.CartItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.CartTotal {
+  display: flex;
+  justify-content: space-between;
 }

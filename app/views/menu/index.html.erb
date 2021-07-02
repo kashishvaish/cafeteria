@@ -1,6 +1,6 @@
 <div class="MenuPageMain">
   <div class="MenuPage-header">
-    <div class="MenuPage-title">Menu</div>
+    <div class="MenuPage-title">Gourmet Cafeteria</div>
     <div class="MenuPage-controls">
       <% if @current_user %>
         <%= @current_user.name %>
@@ -8,19 +8,58 @@
       <% end %>
     </div>
   </div>
-  <% MenuCategory.all().each do |category| %>
-    <div class="MenuPage-category">
-      <%= category.name %>
+  <div class="MenuPage-container">
+    <div class="Menu">
+      <% MenuCategory.all().each do |category| %>
+        <div class="MenuPage-category">
+          <%= category.name %>
+        </div>
+        <% category.menu_items.each do |item| %>
+          <div class="MenuPageItem">
+            <div class="MenuPageItem-name"><%= item.name %></div>
+              <% if @user_cart.cart_items.where(menu_item_id: item.id).blank? %>
+                <%= form_with(url: "/cart_items", method: "post") do |f| %>
+                  <%= f.hidden_field :menu_item_id, value: item.id %>
+                  <%= submit_tag "Add To Cart", class: "AddToCart" %>
+                <% end %>
+              <% else %>
+                <div class="Menuitem-quantityButtons">
+                  <%= form_with(url: "/cart_items", method: "post") do |f| %>
+                    <%= f.hidden_field :menu_item_id, value: item.id %>
+                    <%= submit_tag "+", class: "AddToCart" %>
+                  <% end %>
+                  <%= form_with(url: "/cart_items/:id", method: "delete") do |f| %>
+                    <%= f.hidden_field :menu_item_id, value: item.id %>
+                    <%= submit_tag "-", class: "AddToCart" %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+            <div class="MenuPageItem-details">
+              <div class="MenuItem-description"><%= item.description %></div>
+              <div class="MenuItem-price">Rs. <%= item.price %></div>
+            </div>
+        <% end %>
+      <% end %>
     </div>
-    <% MenuItem.where(menu_category_id: category).each do |item| %>
-      <div class="MenuPageItem">
-        <div class="MenuPageItem-name"><%= item.name %></div>
-        <button class="AddToCart">Add To Cart</button>
-      </div>
-      <div class="MenuPageItem-details">
-        <div class="MenuItem-description"><%= item.description %></div>
-        <div class="MenuItem-price">Rs. <%= item.price %></div>
-      </div>
-    <% end %>
-  <% end %>
+    <div class="Cart">
+      <div class="CartHeader">My Cart</div>
+      <div class="CartBody">
+        <% @user_cart.cart_items.each do |item| %>
+          <div class="CartItem">
+            <div class="CartItem-name">
+              <%= item.menu_item.name %>
+            </div>
+            <div class="CartItem-price">
+              <%= item.menu_item.price %>
+            </div>
+          </div>
+        <% end %>
+        <hr>
+        <div class="CartTotal">
+          <div>Total</div>
+          <div>Rs. <%= @user_cart.total %></div>
+        </div>
+    </div>
+  </div>
 </div>

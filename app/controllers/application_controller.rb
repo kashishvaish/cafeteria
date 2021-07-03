@@ -10,11 +10,12 @@ class ApplicationController < ActionController::Base
 
   def user_cart
     if current_user.cart.blank?
-      Cart.create(
+      @user_cart = Cart.create(
         user_id: current_user.id,
       )
+    else
+      @user_cart = current_user.cart
     end
-    @user_cart = current_user.cart
   end
 
   def current_user

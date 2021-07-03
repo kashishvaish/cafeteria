@@ -1,0 +1,23 @@
+<div class="Order">
+  <div class="OrderHeader">Order details</div>
+  <div class="OrderBody">
+    <% @user_cart.cart_items.each do |item| %>
+      <div class="CartItem">
+        <div class="CartItem-name">
+          <%= item.menu_item.name %>
+        </div>
+        <div class="CartItem-price">
+          <%= item.menu_item.price %>
+        </div>
+      </div>
+    <% end %>
+    <hr>
+    <div class="CartTotal">
+      <div>Total</div>
+      <div>Rs. <%= @user_cart.total %></div>
+    </div>
+    <%= form_with(url: "/orders", method: "post") do |f| %>
+      <%= submit_tag "Place Order", class: "AddToCart" %>
+    <% end %>
+  </div>
+</div>

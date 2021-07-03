@@ -16,6 +16,11 @@
   color: #ffffff;
   padding-top: 20px;
   font-weight: bolder;
+  display: flex;
+}
+
+.username {
+  margin-right: 10px;
 }
 
 .MenuPage-container {

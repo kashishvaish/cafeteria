@@ -3,8 +3,8 @@
     <div class="MenuPage-title">Gourmet Cafeteria</div>
     <div class="MenuPage-controls">
       <% if @current_user %>
-        <%= @current_user.name %>
-        <%= link_to "Sign-out", destroy_sessions_path, method: "delete" %>
+        <div class="username"><%= @current_user.name %></div>
+        <div class="signout"><%= link_to "Sign-out", destroy_sessions_path, method: "delete" %></div>
       <% end %>
     </div>
   </div>
@@ -59,6 +59,10 @@
         <div class="CartTotal">
           <div>Total</div>
           <div>Rs. <%= @user_cart.total %></div>
+        </div>
+        <% if @user_cart.cart_items.first() %>
+          <div class="checkout"><%= link_to "Checkout", "/orders", method: "get" %></div>
+        <% end %>
         </div>
     </div>
   </div>

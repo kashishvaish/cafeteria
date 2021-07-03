@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get "/" => "home#index"
+  get "/" => "home#index", as: :home
   get "menu", to: "menu#index"
+  get "myorders", to: "order_history#index"
   resources :cart_items
   resources :order_items
   resources :users

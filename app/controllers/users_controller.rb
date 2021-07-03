@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     )
     if user.save
       session[:current_user_id] = user.id
-      redirect_to "/menu"
+      redirect_to home_path
     else
       rendirect_to new_user_path
     end

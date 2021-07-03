@@ -3,6 +3,11 @@ class OrdersController < ApplicationController
     render "index"
   end
 
+  def show
+    @current_order = Order.find(params[:id])
+    render "show"
+  end
+
   def create
     if current_user.role == "customer"
       user_id = current_user.id

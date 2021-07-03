@@ -1,0 +1,35 @@
+<div class="MenuPageMain">
+  <div class="MenuPage-header">
+    <div class="MenuPage-title">Gourmet Cafeteria</div>
+    <div class="MenuPage-controls">
+      <% if @current_user %>
+        <div class="username"><%= @current_user.name %></div>
+        <div class="signout"><%= link_to "Sign-out", destroy_sessions_path, method: "delete" %></div>
+      <% end %>
+    </div>
+  </div>
+  <div class="OrderPage-container">
+    <div class="OrderPage-heading">
+      Orders History
+    </div>
+    <div class="OrderPage-body">
+      <table class="OrderHistory-table">
+        <tr>
+          <th>Order ID</th>
+          <th>Order Date</th>
+          <th>Order Total</th>
+          <th>Order Status</th>
+          <th>Order Details</th>
+        </tr>
+        <% @current_user.orders.each do |order| %>
+          <tr>
+            <td><%= order.id %></td>
+            <td><%= order.created_at %></td>
+            <td><%= order.total %></td>
+            <td><%= order.status %></td>
+            <td><%= link_to "Order details", controller: "orders", action: "show", id: order.id %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>

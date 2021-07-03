@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:current_user_id] = user.id
-      redirect_to "/menu"
+      redirect_to home_path
     else
       flash[:error] = "Invalid Email or Password. Please Retry."
       redirect_to new_sessions_path

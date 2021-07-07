@@ -2,6 +2,7 @@ class MenuCategoriesController < ApplicationController
   def create
     MenuCategory.create(
       name: params[:name],
+      status: "active",
     )
     redirect_to request.referrer
   end

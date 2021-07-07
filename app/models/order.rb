@@ -18,7 +18,11 @@ class Order < ActiveRecord::Base
     order(:id)
   end
 
-  def delivered?
+  def self.delivered?
     where(status: "delivered")
+  end
+
+  def self.pending?
+    where.not(status: "delivered")
   end
 end

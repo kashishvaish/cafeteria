@@ -10,7 +10,13 @@ class OrdersController < ApplicationController
 
   def show_all
     if current_user.role == "billing-clerk" or current_user.role == "owner"
-      @orders = Order.order_by_id
+      if params[:filter] == "all"
+        @orders = Order.order_by_id
+      elsif params[:filter] == "pending"
+        @orders = Order.pending?.order_by_id
+      elsif params[:filter] == "delivered"
+        @orders = Order.delivered?.order_by_id
+      end
       render "show_all_orders"
     end
   end
@@ -18,12 +24,13 @@ class OrdersController < ApplicationController
   def create
     if current_user.role == "customer"
       user_id = current_user.id
-      status = "pending delivery"
+    elsif current_user.role == "billing-clerk"
+      user_id = 2
     end
 
     order = Order.create(
       user_id: user_id,
-      status: status,
+      status: "pending delivery",
     )
 
     user_cart.cart_items.each do |item|

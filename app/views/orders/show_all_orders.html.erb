@@ -3,6 +3,12 @@
     <div class="OrderPage-heading">
       Orders
     </div>
+    <div class="OrderPage-filter">
+      <%= button_to "Show All", "/all_orders/all", method: "get" %>
+      <%= button_to "Pending", "/all_orders/pending", method: "get" %>
+      <%= button_to "Delivered", "/all_orders/delivered", method: "get" %>
+
+    </div>
     <div class="OrderPage-body">
       <table class="OrderHistory-table">
         <tr>

@@ -50,6 +50,6 @@ class OrdersController < ApplicationController
     order = Order.find(params[:id])
     status = params[:status]
     order.update(status: status)
-    redirect_to "/all_orders"
+    redirect_to request.referrer
   end
 end

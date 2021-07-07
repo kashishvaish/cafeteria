@@ -21,6 +21,24 @@ class OrdersController < ApplicationController
     end
   end
 
+  def generate_report
+    if current_user.role == "owner"
+      if params[:order_id]
+        @orders = Order.where(id: params[:order_id])
+        render "generate_report"
+      elsif params[:start_date]
+        @start_date = params[:start_date]
+        @end_date = params[:end_date]
+        @orders = Order.between(@start_date, @end_date)
+        if params[:user_id].blank? == false
+          @orders = @orders.where(user_id: params[:user_id])
+        end
+        @total_sale = @orders.total_sale
+        render "generate_report"
+      end
+    end
+  end
+
   def create
     if current_user.role == "customer"
       user_id = current_user.id

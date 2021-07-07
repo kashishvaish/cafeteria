@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users
   get "/view_users" => "users#show_all"
   resources :orders
+  get "/sales_report" => "orders#generate_report", as: :sales_report
   get "/all_orders/:filter" => "orders#show_all"
   post "addtocart/:id" => "menu#addtocart"
   get "/signin" => "sessions#new", as: :new_sessions

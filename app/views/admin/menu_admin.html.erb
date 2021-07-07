@@ -1,0 +1,39 @@
+<div class="MenuPageMain">
+  Add New Category
+  <div class="NewCategoryForm">
+    <%= form_with url: menu_categories_path do |form| %>
+      Category Name:
+      <%= form.text_field :name %>
+      <%= form.submit "Add Category" %>
+    <% end %>
+  </div>
+  <% MenuCategory.all().each do |category| %>
+    <div class="MenuPage-category">
+      <%= category.name %>
+      <%= button_to "Rename", "menu_categories/#{category.id}/edit", method: "get" %>
+      <%= button_to "Delete", "menu_categories/#{category.id}", method: "delete" %>
+      <%= button_to "Add Item", "menu_items/new", params: { :id => category.id }, method: "get" %>
+    </div>
+    <div class="Category-status">
+      Status: <%= category.status %>
+      <% if category.status == "active" %>
+        <%= button_to "Mark as Inactive", edit_category_status_path, params: { :id => category.id, :status => "inactive" }, method: "patch" %>
+      <% else %>
+        <%= button_to "Mark as Active", edit_category_status_path, params: { :id => category.id, :status => "active" }, method: "patch" %>
+      <% end %>
+    </div>
+    <% category.menu_items.each do |item| %>
+      <div class="MenuPageItem">
+        <div class="MenuPageItem-name"><%= item.name %></div>
+        <div class="Menuitem-quantityButtons">
+          <%= button_to "Edit", "menu_items/#{item.id}/edit", method: "get" %>
+          <%= button_to "Delete", "menu_items/#{item.id}", method: "delete" %>
+        </div>
+      </div>
+      <div class="MenuPageItem-details">
+        <div class="MenuItem-description"><%= item.description %></div>
+        <div class="MenuItem-price">Rs. <%= item.price %></div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

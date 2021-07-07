@@ -1,0 +1,39 @@
+<div class="MenuPageMain">
+  <div class="OrderPage-container">
+    <div class="OrderPage-heading">
+      Users
+    </div>
+    <div class="Users-filter">
+      <div class="Form-section">
+        <%= form_with url: "/view_users", method: "get" do |form| %>
+          <p class="FormInput-label">Role: </p>
+          <%= form.radio_button :role, "customer", class: "Form-input", onclick: "this.form.submit()" %> Customer
+          <%= form.radio_button :role, "billing-clerk", class: "Form-input", onclick: "this.form.submit()" %> Billing-clerk
+          <%= form.radio_button :role, "owner", class: "Form-input", onclick: "this.form.submit()" %> Owner
+        <% end %>
+      </div>
+      <%= button_to "Show All Users", "/view_users", method: "get" %>
+    <div>
+    <div class="OrderPage-body">
+      <table class="OrderHistory-table">
+        <tr>
+          <th>User ID</th>
+          <th>User Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>User Details</th>
+          <th>Remove</th>
+        </tr>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+            <td><%= link_to "User details", controller: "users", action: "show", id: user.id %></td>
+            <td><%= button_to "Remove", "/users/#{user.id}", method: "delete" %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>

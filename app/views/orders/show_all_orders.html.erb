@@ -1,24 +1,34 @@
 <div class="MenuPageMain">
   <div class="OrderPage-container">
     <div class="OrderPage-heading">
-      Orders History
+      Orders
     </div>
     <div class="OrderPage-body">
       <table class="OrderHistory-table">
         <tr>
           <th>Order ID</th>
+          <th>User ID</th>
+          <th>User Name</th>
           <th>Order Date</th>
           <th>Order Total</th>
           <th>Order Status</th>
           <th>Order Details</th>
+          <th>Mark as delivered</th>
         </tr>
-        <% @current_user.orders.each do |order| %>
+        <% @orders.each do |order| %>
           <tr>
             <td><%= order.id %></td>
+            <td><%= order.user_id %></td>
+            <td><%= order.user.name %></td>
             <td><%= order.created_at %></td>
             <td><%= order.total %></td>
             <td><%= order.status %></td>
             <td><%= link_to "Order details", controller: "orders", action: "show", id: order.id %></td>
+            <td>
+              <%= form_with(url: "/orders/#{order.id}", method: "put") do %>
+                <%= button_to "Mark as Delivered", onclick: "this.form.submit()" %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </table>

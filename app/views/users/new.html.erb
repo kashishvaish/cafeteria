@@ -1,5 +1,11 @@
 <div class="NewUsers-container">
-  <p class="NewUsers-title">Sign-Up!</p>
+  <p class="NewUsers-title">
+    <% if @current_user %>
+      Add Member
+    <% else %>
+      Sign-Up!
+    <% end %>
+  </p>
 
   <section class="UsersNew">
     <%= form_with url: users_path do |form| %>
@@ -11,12 +17,23 @@
         <p class="FormInput-label">Email: </p>
         <%= form.email_field :email, class: "Form-input" %>
       </div>
+      <% if @current_user && @current_user.role == "owner" %>
+        <div class="Form-section">
+          <p class="FormInput-label">Role: </p>
+          <%= form.radio_button :role, "billing-clerk", class: "Form-input", checked: true %> Billing-clerk
+          <%= form.radio_button :role, "owner", class: "Form-input" %> Owner
+        </div>
+      <% end %>
       <div class="Form-section">
         <p class="FormInput-label">Password: </p>
         <%= form.password_field :password, class: "Form-input" %>
       </div>
       <div class="Form-section">
-        <%= form.submit "Sign-up!", class: "Form-submit" %>
+        <% if @current_user %>
+          <%= form.submit "Create", class: "Form-submit" %>
+        <% else %>
+          <%= form.submit "Sign-up!", class: "Form-submit" %>
+        <% end %>
       </div>
     <% end %>
   </section>

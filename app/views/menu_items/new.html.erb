@@ -1,0 +1,24 @@
+<div class="NewUsers-container">
+  <p class="NewUsers-title">
+    Add New Item
+  </p>
+    <%= form_with url: menu_items_path, method: "post" do |form| %>
+      <%= form.hidden_field :menu_category_id, value: @category_id %>
+      <div class="Form-section">
+        <p class="FormInput-label">Name: </p>
+        <%= form.text_field :name, class: "Form-input" %>
+      </div>
+      <div class="Form-section">
+        <p class="FormInput-label">Description: </p>
+        <%= form.text_field :description, class: "Form-input" %>
+      </div>
+      <div class="Form-section">
+        <p class="FormInput-label">Price: </p>
+        <%= form.number_field :price, class: "Form-input" %>
+      </div>
+
+      <div class="Form-section">
+        <%= form.submit "Add Item", class: "Form-submit" %>
+      </div>
+    <% end %>
+</div>

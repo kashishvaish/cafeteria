@@ -8,6 +8,13 @@ class OrdersController < ApplicationController
     render "show"
   end
 
+  def show_all
+    if current_user.role == "billing-clerk" or current_user.role == "owner"
+      @orders = Order.order_by_id
+      render "show_all_orders"
+    end
+  end
+
   def create
     if current_user.role == "customer"
       user_id = current_user.id
@@ -30,5 +37,12 @@ class OrdersController < ApplicationController
     end
     user_cart.destroy
     redirect_to "/menu"
+  end
+
+  def update
+    order = Order.find(params[:id])
+    status = params[:status]
+    order.update(status: status)
+    redirect_to "/all_orders"
   end
 end

@@ -3,6 +3,9 @@ class SessionsController < ApplicationController
   skip_before_action :user_cart
 
   def new
+    if current_user
+      redirect_to "/"
+    end
   end
 
   def create

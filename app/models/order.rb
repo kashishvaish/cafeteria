@@ -9,4 +9,16 @@ class Order < ActiveRecord::Base
     end
     return sum
   end
+
+  def self.order_by_date
+    order(:created_at)
+  end
+
+  def self.order_by_id
+    order(:id)
+  end
+
+  def delivered?
+    where(status: "delivered")
+  end
 end

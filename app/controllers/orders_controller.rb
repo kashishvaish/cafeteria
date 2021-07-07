@@ -48,8 +48,7 @@ class OrdersController < ApplicationController
 
   def update
     order = Order.find(params[:id])
-    status = params[:status]
-    order.update(status: status)
+    order.update(status: "delivered")
     redirect_to request.referrer
   end
 end

@@ -1,5 +1,5 @@
 .Home-container {
-  background-image: url(cupcakes.jpg);
+  background-image: url("cupcakes.jpg");
   background-size: cover;
   height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;

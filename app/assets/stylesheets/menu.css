@@ -4,6 +4,8 @@
 
 .Menu {
   width: 70%;
+  background-color: #ededed;
+  padding: 20px;
 }
 
 .MenuPage-category {
@@ -24,8 +26,8 @@
 
 .MenuPageItem {
   font-size: 16px;
-  color: #56111d;
-  background-color: #f7c7d2;
+  color: #ffffff;
+  background-color: #da0037;
   padding: 1%;
   margin-left: 25px;
   margin-bottom: 10px;
@@ -62,14 +64,46 @@
 
 .Cart {
   width: 30%;
+  background-color: #dddddd;
+  padding: 10px;
 }
 
 .CartItem {
   display: flex;
   justify-content: space-between;
+  padding-top: 5px;
 }
 
 .CartTotal {
   display: flex;
   justify-content: space-between;
+}
+
+.CartHeader {
+  color: #da0037;
+  font-size: 20px;
+  font-weight: bolder;
+  padding: 20px 0px;
+}
+
+.CartItem-name {
+  color: #171717;
+}
+
+.CartItem-price {
+  color: #444444;
+}
+
+.TotalAmount {
+  font-weight: bolder;
+}
+.Checkout {
+  margin-top: 25px;
+  text-align: center;
+}
+.CheckoutButton {
+  background-color: #006400;
+  padding: 10px;
+  text-decoration: none;
+  color: #ffffff;
 }

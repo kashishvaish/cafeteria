@@ -7,9 +7,9 @@
 
 .Company-title {
   color: #ffffff;
-  font-size: 60px;
-  padding-top: 25%;
-  padding-left: 40px;
+  font-size: 10vw;
+  padding-top: 20%;
+  padding-left: 20%;
 }
 
 .navbar {
@@ -32,6 +32,6 @@
 }
 
 .HomeOrder {
-  margin-left: 40px;
+  margin-left: 20%;
   margin-top: 30px;
 }

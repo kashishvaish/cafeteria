@@ -1,0 +1,53 @@
+.OrderPage-container {
+  padding: 20px;
+}
+
+.OrderPage-heading {
+  font-size: 30px;
+  font-weight: bolder;
+  margin-bottom: 30px;
+}
+
+.OrderHistory-table th {
+  border: 1px solid #171717;
+  background-color: #171717;
+  color: #ffffff;
+  padding: 10px;
+}
+
+.OrderHistory-table td {
+  border: 1px solid #ededed;
+  padding: 5px;
+}
+
+.OrderHistory-table {
+  margin: 10px auto;
+  width: 90%;
+}
+
+.OrderHistory-table tr:nth-child(even) {
+  background-color: #ededed;
+}
+
+.FormField {
+  margin-top: 20px;
+}
+
+.FormInput {
+  padding: 5px;
+  border: 1px solid #aaaaaa;
+  color: #444444;
+}
+
+.Green {
+  color: #008000;
+}
+
+.Red {
+  color: #f51b1b;
+}
+
+.SubHeading {
+  color: #666666;
+  margin-bottom: 20px;
+}

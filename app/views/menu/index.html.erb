@@ -1,65 +1,65 @@
-<div class="MenuPageMain">
-  <div class="MenuPage-container">
-    <div class="Menu">
-      <% MenuCategory.all().each do |category| %>
-        <div class="MenuPage-category">
-          <%= category.name %>
-          <% if category.status == "inactive" %>
-            <div class="Inactive">Inactive</div>
-          <% end %>
-        </div>
-        <% category.menu_items.each do |item| %>
-          <div class="MenuPageItem">
-            <div class="MenuPageItem-name"><%= item.name %></div>
-            <% if category.status == "active" %>
-              <% if @user_cart.cart_items.where(menu_item_id: item.id).blank? %>
+<div class="MenuPage-container">
+  <div class="Menu">
+    <% MenuCategory.all().each do |category| %>
+      <div class="MenuPage-category">
+        <%= category.name %>
+        <% if category.status == "inactive" %>
+          <div class="Inactive">Inactive</div>
+        <% end %>
+      </div>
+      <% category.menu_items.each do |item| %>
+        <div class="MenuPageItem">
+          <div class="MenuPageItem-name"><%= item.name %></div>
+          <% if category.status == "active" %>
+            <% if @user_cart.cart_items.where(menu_item_id: item.id).blank? %>
+              <%= form_with(url: "/cart_items", method: "post") do |f| %>
+                <%= f.hidden_field :menu_item_id, value: item.id %>
+                <%= submit_tag "Add To Cart", class: "AddToCart" %>
+              <% end %>
+            <% else %>
+              <div class="Menuitem-quantityButtons">
                 <%= form_with(url: "/cart_items", method: "post") do |f| %>
                   <%= f.hidden_field :menu_item_id, value: item.id %>
-                  <%= submit_tag "Add To Cart", class: "AddToCart" %>
+                  <%= submit_tag "+", class: "AddToCart" %>
                 <% end %>
-              <% else %>
-                <div class="Menuitem-quantityButtons">
-                  <%= form_with(url: "/cart_items", method: "post") do |f| %>
-                    <%= f.hidden_field :menu_item_id, value: item.id %>
-                    <%= submit_tag "+", class: "AddToCart" %>
-                  <% end %>
-                  <%= form_with(url: "/cart_items/:id", method: "delete") do |f| %>
-                    <%= f.hidden_field :menu_item_id, value: item.id %>
-                    <%= submit_tag "-", class: "AddToCart" %>
-                  <% end %>
-                </div>
-              <% end %>
+                <%= form_with(url: "/cart_items/:id", method: "delete") do |f| %>
+                  <%= f.hidden_field :menu_item_id, value: item.id %>
+                  <%= submit_tag "-", class: "AddToCart" %>
+                <% end %>
+              </div>
             <% end %>
-            </div>
-            <div class="MenuPageItem-details">
-              <div class="MenuItem-description"><%= item.description %></div>
-              <div class="MenuItem-price">Rs. <%= item.price %></div>
-            </div>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="Cart">
-      <div class="CartHeader">My Cart</div>
-      <div class="CartBody">
-        <% @user_cart.cart_items.each do |item| %>
-          <div class="CartItem">
-            <div class="CartItem-name">
-              <%= item.menu_item.name %>
-            </div>
-            <div class="CartItem-price">
-              <%= item.menu_item.price %>
-            </div>
+          <% end %>
           </div>
-        <% end %>
-        <hr>
-        <div class="CartTotal">
-          <div>Total</div>
-          <div>Rs. <%= @user_cart.total %></div>
+          <div class="MenuPageItem-details">
+            <div class="MenuItem-description"><%= item.description %></div>
+            <div class="MenuItem-price">Rs. <%= item.price %></div>
+          </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="Cart">
+    <div class="CartHeader">My Cart</div>
+    <div class="CartBody">
+      <% @user_cart.cart_items.each do |item| %>
+        <div class="CartItem">
+          <div class="CartItem-name">
+            <%= item.menu_item.name %>
+          </div>
+          <div class="CartItem-price">
+            <%= item.menu_item.price %>
+          </div>
         </div>
+      <% end %>
+      <hr>
+      <div class="CartTotal">
+        <div class="CartItem-name">Total</div>
+        <div class="TotalAmount">Rs. <%= @user_cart.total %></div>
+      </div>
+      <div class="Checkout">
         <% if @user_cart.cart_items.first() %>
-          <div class="checkout"><%= link_to "Checkout", "/orders", method: "get" %></div>
+          <%= link_to "Checkout", "/orders", method: "get", class: "CheckoutButton" %>
         <% end %>
-        </div>
+      </div>
     </div>
   </div>
 </div>

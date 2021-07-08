@@ -1,10 +1,17 @@
 <div class="MenuPageMain">
   <div class="OrderPage-container">
     <div class="OrderPage-heading">
-      Orders ID: <%= @current_order.id %>
+      Order ID: <%= @current_order.id %>
       <br/>
-      Order Status: <%= @current_order.status %>
+      Order Status:
+      <% if @current_order.status == "delivered" %>
+        <span class="Green"><%= @current_order.status %></span>
+      <% else %>
+        <span class="Red"><%= @current_order.status %></span>
+      <% end %>
       <br/>
+    </div>
+    <div class="SubHeading">
       <% if @current_order.user.id != 2 %>
         Delivery State: <%= @current_order.user.state %>
         <br/>
@@ -14,8 +21,8 @@
         <br/>
         Contact Number: <%= @current_order.user.contact_no %>
       <% end %>
-
     </div>
+
     <div class="OrderPage-body">
       <table class="OrderHistory-table">
         <tr>

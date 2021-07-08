@@ -9,7 +9,7 @@ class HomeController < ApplicationController
       elsif current_user.role == "billing-clerk"
         render "billing_clerk_home"
       elsif current_user.role == "owner"
-        render "admin_page"
+        render "index"
       end
     else
       render "index"

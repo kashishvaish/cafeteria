@@ -64,3 +64,9 @@
 .BlackBG {
   background-color: #000000;
 }
+
+.OrderPage-filter {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 50px;
+}

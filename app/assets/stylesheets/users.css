@@ -16,10 +16,15 @@
 }
 
 .Users-title {
-  margin-top: 30%;
+  margin-top: 25%;
   margin-bottom: 20px;
   font-size: 25px;
   color: #ffffff;
+}
+
+.UsersNew {
+  display: inline-block;
+  margin: auto;
 }
 
 .Form-section {

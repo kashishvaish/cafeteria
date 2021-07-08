@@ -1,5 +1,5 @@
 .Home-container {
-  background-image: url("cupcakes.jpg");
+  background-image: url("bg.jpg");
   background-size: cover;
   height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -8,8 +8,8 @@
 .Company-title {
   color: #ffffff;
   font-size: 10vw;
-  padding-top: 20%;
-  padding-left: 20%;
+  padding-top: 15%;
+  padding-left: 15%;
 }
 
 .navbar {
@@ -32,6 +32,6 @@
 }
 
 .HomeOrder {
-  margin-left: 20%;
+  margin-left: 15%;
   margin-top: 30px;
 }

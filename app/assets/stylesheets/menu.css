@@ -4,7 +4,7 @@
 
 .Menu {
   width: 70%;
-  background-color: #ededed;
+  background-color: #000000;
   padding: 20px;
 }
 
@@ -14,6 +14,9 @@
   padding: 15px;
   margin-bottom: 10px;
   display: flex;
+}
+.MenuCategory-container {
+  margin-bottom: 50px;
 }
 
 .Inactive {
@@ -27,7 +30,7 @@
 .MenuPageItem {
   font-size: 16px;
   color: #ffffff;
-  background-color: #da0037;
+  border-bottom: 2px solid #444444;
   padding: 1%;
   margin-left: 25px;
   margin-bottom: 10px;
@@ -36,9 +39,10 @@
 }
 
 .AddToCart {
-  background-color: #006400;
-  color: #ffffff;
-  font-size: larger;
+  border: 1px solid #f8d614;
+  background-color: transparent;
+  color: #f8d614;
+  font-size: large;
   margin-left: 5px;
 }
 
@@ -50,21 +54,24 @@
   display: flex;
   margin-left: 35px;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .MenuItem-description {
   width: 65%;
+  color: #ededed;
 }
 
 .MenuItem-price {
   width: 30%;
   text-align: right;
+  color: #f8d614;
 }
 
 .Cart {
   width: 30%;
-  background-color: #dddddd;
+  border-left: 1px solid #666666;
+  background-color: #000000;
   padding: 10px;
 }
 
@@ -87,15 +94,16 @@
 }
 
 .CartItem-name {
-  color: #171717;
+  color: #ededed;
 }
 
 .CartItem-price {
-  color: #444444;
+  color: #cccccc;
 }
 
 .TotalAmount {
   font-weight: bolder;
+  color: #ffffff;
 }
 .Checkout {
   margin-top: 25px;

@@ -10,6 +10,7 @@
   font-size: 10vw;
   padding-top: 15%;
   padding-left: 15%;
+  font-family: cursive;
 }
 
 .navbar {
@@ -20,14 +21,27 @@
   float: right;
   padding: 20px;
 }
+
 .Navbar-link {
+  color: #dedede;
+}
+
+.Navbar-link:hover {
   color: #ffffff;
 }
 
 .HomeOrder-button {
-  padding: 12px;
+  padding: 12px 25px;
   background-color: #f8d614;
   color: #000000;
+  text-decoration: none;
+}
+
+.HomeOrder-button:hover {
+  padding: 14px 27px;
+  color: #f8d614;
+  border: 1px solid #f8d614;
+  background-color: transparent;
   text-decoration: none;
 }
 

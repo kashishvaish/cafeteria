@@ -1,40 +1,42 @@
 <div class="MenuPage-container">
   <div class="Menu">
     <% MenuCategory.all().each do |category| %>
-      <div class="MenuPage-category">
-        <%= category.name %>
-        <% if category.status == "inactive" %>
-          <div class="Inactive">Inactive</div>
-        <% end %>
-      </div>
-      <% category.menu_items.each do |item| %>
-        <div class="MenuPageItem">
-          <div class="MenuPageItem-name"><%= item.name %></div>
-          <% if category.status == "active" %>
-            <% if @user_cart.cart_items.where(menu_item_id: item.id).blank? %>
-              <%= form_with(url: "/cart_items", method: "post") do |f| %>
-                <%= f.hidden_field :menu_item_id, value: item.id %>
-                <%= submit_tag "Add To Cart", class: "AddToCart" %>
-              <% end %>
-            <% else %>
-              <div class="Menuitem-quantityButtons">
+      <div class="MenuCategory-container">
+        <div class="MenuPage-category">
+          <%= category.name %>
+          <% if category.status == "inactive" %>
+            <div class="Inactive">Inactive</div>
+          <% end %>
+        </div>
+        <% category.menu_items.each do |item| %>
+          <div class="MenuPageItem">
+            <div class="MenuPageItem-name"><%= item.name %></div>
+            <% if category.status == "active" %>
+              <% if @user_cart.cart_items.where(menu_item_id: item.id).blank? %>
                 <%= form_with(url: "/cart_items", method: "post") do |f| %>
                   <%= f.hidden_field :menu_item_id, value: item.id %>
-                  <%= submit_tag "+", class: "AddToCart" %>
+                  <%= submit_tag "Add To Cart", class: "AddToCart" %>
                 <% end %>
-                <%= form_with(url: "/cart_items/:id", method: "delete") do |f| %>
-                  <%= f.hidden_field :menu_item_id, value: item.id %>
-                  <%= submit_tag "-", class: "AddToCart" %>
-                <% end %>
-              </div>
+              <% else %>
+                <div class="Menuitem-quantityButtons">
+                  <%= form_with(url: "/cart_items", method: "post") do |f| %>
+                    <%= f.hidden_field :menu_item_id, value: item.id %>
+                    <%= submit_tag "+", class: "AddToCart" %>
+                  <% end %>
+                  <%= form_with(url: "/cart_items/:id", method: "delete") do |f| %>
+                    <%= f.hidden_field :menu_item_id, value: item.id %>
+                    <%= submit_tag "-", class: "AddToCart" %>
+                  <% end %>
+                </div>
+              <% end %>
             <% end %>
-          <% end %>
-          </div>
-          <div class="MenuPageItem-details">
-            <div class="MenuItem-description"><%= item.description %></div>
-            <div class="MenuItem-price">Rs. <%= item.price %></div>
-          </div>
-      <% end %>
+            </div>
+            <div class="MenuPageItem-details">
+              <div class="MenuItem-description"><%= item.description %></div>
+              <div class="MenuItem-price">Rs. <%= item.price %></div>
+            </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
   <div class="Cart">

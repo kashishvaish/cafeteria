@@ -10,14 +10,14 @@
     <%= javascript_pack_tag "application", 'data-turbolinks-track': "reload" %>
   </head>
 
-  <body>
+  <body class="BlackBG">
     <% if @current_user %>
       <div class="Header">
         <%= link_to "Gourmet Cafeteria", "/", class: "Header-title" %>
         <nav class="navbar">
           <ul>
             <li>
-              <%= link_to "Sign-out", destroy_sessions_path, method: "delete", class: "Navbar-link" %>
+              <%= link_to "Sign-out", destroy_sessions_path, method: "delete", class: "Navbar-link Red" %>
             </li>
             <% if @current_user.role == "customer" %>
               <li><%= link_to "My Orders", "/myorders", method: "get", class: "Navbar-link" %></li>

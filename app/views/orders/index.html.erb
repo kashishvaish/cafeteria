@@ -17,6 +17,16 @@
       <div>Rs. <%= @user_cart.total %></div>
     </div>
     <%= form_with(url: "/orders", method: "post") do |f| %>
+      <% if @current_user.role == "customer" %>
+        State: <%= f.text_field :state, value: @current_user.state, required: true %>
+        <br />
+        City: <%= f.text_field :city, value: @current_user.city, required: true %>
+        <br />
+        Address: <%= f.text_field :address, value: @current_user.address, required: true %>
+        <br />
+        Contact Number: <%= f.telephone_field :contact_no, value: @current_user.contact_no, required: true %>
+        <br />
+      <% end %>
       <%= submit_tag "Place Order", class: "AddToCart" %>
     <% end %>
   </div>

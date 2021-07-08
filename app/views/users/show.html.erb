@@ -9,13 +9,15 @@
       <br/>
       Email: <%= @user.email %>
       <br/>
-      Contact Number: <%= @user.contact_no %>
-      <br/>
-      State: <%= @user.state %>
-      <br/>
-      City: <%= @user.city %>
-      <br/>
-      Address: <%= @user.address %>
+      <% if @user.id != 2 %>
+        Contact Number: <%= @user.contact_no %>
+        <br/>
+        State: <%= @user.state %>
+        <br/>
+        City: <%= @user.city %>
+        <br/>
+        Address: <%= @user.address %>
+      <% end %>
     </div>
     <% if @user.role == "customer" %>
       <div class="OrderPage-container">

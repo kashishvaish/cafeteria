@@ -38,7 +38,7 @@ class Order < ActiveRecord::Base
     if start_date && end_date
       where("created_at BETWEEN ? AND ?", start_date.to_date.beginning_of_day, end_date.to_date.end_of_day)
     else
-      where(id: 0)
+      where(nil)
     end
   end
 end

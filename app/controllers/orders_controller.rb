@@ -35,6 +35,8 @@ class OrdersController < ApplicationController
         end
         @total_sale = @orders.total_sale
         render "generate_report"
+      else
+        @orders = Order.all()
       end
     end
   end
@@ -42,6 +44,12 @@ class OrdersController < ApplicationController
   def create
     if current_user.role == "customer"
       user_id = current_user.id
+      current_user.update(
+        state: params[:state],
+        city: params[:city],
+        address: params[:address],
+        contact_no: params[:contact_no],
+      )
     elsif current_user.role == "billing-clerk"
       user_id = 2
     end

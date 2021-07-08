@@ -4,6 +4,17 @@
       Orders ID: <%= @current_order.id %>
       <br/>
       Order Status: <%= @current_order.status %>
+      <br/>
+      <% if @current_order.user.id != 2 %>
+        Delivery State: <%= @current_order.user.state %>
+        <br/>
+        Delivery City: <%= @current_order.user.city %>
+        <br/>
+        Delivery Address: <%= @current_order.user.address %>
+        <br/>
+        Contact Number: <%= @current_order.user.contact_no %>
+      <% end %>
+
     </div>
     <div class="OrderPage-body">
       <table class="OrderHistory-table">

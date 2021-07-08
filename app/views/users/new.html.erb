@@ -1,11 +1,24 @@
-<div class="NewUsers-container">
-  <p class="NewUsers-title">
-    <% if @current_user %>
-      Add Member
-    <% else %>
-      Sign-Up!
-    <% end %>
-  </p>
+<div class="UsersPageMain">
+  <%= image_tag "drinks.jpg", class: "Users-bg" %>
+  <div class="Users-container">
+    <nav class="navbar">
+      <ul>
+        <li>
+          <%= link_to "Sign-in", new_sessions_path, class: "Navbar-link" %>
+        </li>
+        <li>
+          <%= link_to "Home", "/", class: "Navbar-link" %>
+        </li>
+      </ul>
+    </nav>
+    <p class="Users-title">
+
+      <% if @current_user %>
+        Add Member
+      <% else %>
+        Sign-Up!
+      <% end %>
+    </p>
 
   <section class="UsersNew">
     <%= form_with url: users_path do |form| %>

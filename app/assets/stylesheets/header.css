@@ -1,0 +1,17 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #000000;
+}
+
+.Header-title {
+  font-size: 30px;
+  color: #f7c7d2;
+  padding: 10px;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+.username {
+  color: #f8d614;
+}

@@ -1,11 +1,20 @@
-<h1>Welcome to Cafeteria</h1>
-<nav>
-  <ul>
-    <li>
-      <%= link_to "Sign-up", new_user_path %>
-    </li>
-    <li>
-      <%= link_to "Sign-in", new_sessions_path %>
-    </li>
-  </ul>
-</nav>
+<div class="Home-container">
+  <nav class="navbar">
+    <% if @current_user == nil %>
+      <ul>
+        <li>
+          <%= link_to "Sign-up", new_user_path, class: "Navbar-link" %>
+        </li>
+        <li>
+          <%= link_to "Sign-in", new_sessions_path, class: "Navbar-link" %>
+        </li>
+      </ul>
+    <% end %>
+  </nav>
+  <div class="Company-title">Gourmet<br/> Cafeteria</div>
+  <div class="HomeOrder">
+    <% if @current_user == nil || @current_user.role != "owner" %>
+      <%= link_to "Order Now", "/menu", method: "get", class: "HomeOrder-button" %>
+    <% end %>
+  </div>
+</div>

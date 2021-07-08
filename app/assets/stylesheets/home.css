@@ -1,0 +1,37 @@
+.Home-container {
+  background-image: url(cupcakes.jpg);
+  background-size: cover;
+  height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.Company-title {
+  color: #ffffff;
+  font-size: 60px;
+  padding-top: 25%;
+  padding-left: 40px;
+}
+
+.navbar {
+  float: right;
+}
+
+.navbar li {
+  float: right;
+  padding: 20px;
+}
+.Navbar-link {
+  color: #ffffff;
+}
+
+.HomeOrder-button {
+  padding: 12px;
+  background-color: #f8d614;
+  color: #000000;
+  text-decoration: none;
+}
+
+.HomeOrder {
+  margin-left: 40px;
+  margin-top: 30px;
+}

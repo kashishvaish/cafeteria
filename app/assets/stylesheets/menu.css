@@ -1,28 +1,3 @@
-.MenuPage-header {
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  background-color: #3d000e;
-}
-
-.MenuPage-title {
-  font-size: 30px;
-  color: #f7c7d2;
-  padding: 10px;
-  font-weight: bolder;
-}
-.MenuPage-controls {
-  font-size: 14px;
-  color: #ffffff;
-  padding-top: 20px;
-  font-weight: bolder;
-  display: flex;
-}
-
-.username {
-  margin-right: 10px;
-}
-
 .MenuPage-container {
   display: flex;
 }

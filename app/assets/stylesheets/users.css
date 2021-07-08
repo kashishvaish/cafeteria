@@ -1,12 +1,25 @@
-.NewUsers-container {
-  width: 50%;
-  height: 50%;
-  margin: auto;
+.UsersPageMain {
+  display: flex;
 }
 
-.NewUsers-title {
+.Users-container {
+  width: 50%;
+  height: 100vh;
+  margin: auto;
+  background-color: #444444;
+  padding-left: 15px;
+}
+
+.Users-bg {
+  height: 100vh;
+  width: 50vw;
+}
+
+.Users-title {
+  margin-top: 30%;
   margin-bottom: 20px;
-  font-size: 30px;
+  font-size: 25px;
+  color: #ffffff;
 }
 
 .Form-section {
@@ -19,14 +32,14 @@
 }
 
 .FormInput-label {
-  color: #555555;
+  color: #bbbbbb;
   margin-bottom: 8px;
 }
 
 .Form-submit {
-  font-size: 20px;
-  padding: 10px;
-  background-color: #5cb85c;
+  font-size: 18px;
+  padding: 7px;
+  background-color: #2ea02e;
+  border: none;
   color: #ffffff;
-  border-radius: 5px;
 }

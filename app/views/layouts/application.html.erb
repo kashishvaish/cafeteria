@@ -11,15 +11,26 @@
   </head>
 
   <body>
-    <div class="MenuPage-header">
-      <div class="MenuPage-title">Gourmet Cafeteria</div>
-      <div class="MenuPage-controls">
-        <% if @current_user %>
-          <div class="username"><%= @current_user.name %></div>
-          <div class="signout"><%= link_to "Sign-out", destroy_sessions_path, method: "delete" %></div>
-        <% end %>
+    <% if @current_user %>
+      <div class="Header">
+        <%= link_to "Gourmet Cafeteria", "/", class: "Header-title" %>
+        <nav class="navbar">
+          <ul>
+            <li>
+              <%= link_to "Sign-out", destroy_sessions_path, method: "delete", class: "Navbar-link" %>
+            </li>
+            <% if @current_user.role == "customer" %>
+              <li><%= link_to "My Orders", "/myorders", method: "get", class: "Navbar-link" %></li>
+              <li><%= link_to "Menu", "/menu", method: "get", class: "Navbar-link" %></li>
+            <% end %>
+            <li class="username">
+              <%= @current_user.name %>
+            </li>
+
+          </ul>
+        </nav>
       </div>
-    </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

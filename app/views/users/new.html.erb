@@ -15,49 +15,53 @@
         </ul>
       </nav>
     <% end %>
-    <p class="UsersNew-title">
-
-      <% if @current_user %>
-        Add Member
-      <% else %>
-        Sign-Up!
-      <% end %>
-    </p>
+    <div class="UserForm">
+      <p class="UsersNew-title">
+        <% if @current_user %>
+          Add Member
+        <% else %>
+          Sign-Up!
+        <% end %>
+      </p>
+    </div>
     <% if flash[:error] %>
       <p class="Flash-error">
         <%= flash[:error] %>
       </p>
     <% end %>
-  <section class="UsersNew">
-    <%= form_with url: users_path do |form| %>
-      <div class="Form-section">
-        <p class="FormInput-label">Name: </p>
-        <%= form.text_field :name, class: "Form-input" %>
-      </div>
-      <div class="Form-section">
-        <p class="FormInput-label">Email: </p>
-        <%= form.email_field :email, class: "Form-input" %>
-      </div>
-      <% if @current_user && @current_user.owner? %>
+    <div class="UserForm">
+
+    <section class="UsersNew">
+      <%= form_with url: users_path do |form| %>
         <div class="Form-section">
-          <p class="FormInput-label">Role: </p>
-          <%= form.radio_button :role, "billing-clerk", class: "Form-input", checked: true %>
-          <span class="FormField">Billing-clerk<span>
-          <%= form.radio_button :role, "owner", class: "Form-input" %>
-          <span class="FormField">Owner<span>
+          <p class="FormInput-label">Name: </p>
+          <%= form.text_field :name, class: "Form-input" %>
+        </div>
+        <div class="Form-section">
+          <p class="FormInput-label">Email: </p>
+          <%= form.email_field :email, class: "Form-input" %>
+        </div>
+        <% if @current_user && @current_user.owner? %>
+          <div class="Form-section">
+            <p class="FormInput-label">Role: </p>
+            <%= form.radio_button :role, "billing-clerk", class: "Form-input", checked: true %>
+            <span class="FormField">Billing-clerk<span>
+            <%= form.radio_button :role, "owner", class: "Form-input" %>
+            <span class="FormField">Owner<span>
+          </div>
+        <% end %>
+        <div class="Form-section">
+          <p class="FormInput-label">Password: </p>
+          <%= form.password_field :password, class: "Form-input" %>
+        </div>
+        <div class="Form-section">
+          <% if @current_user %>
+            <%= form.submit "Create", class: "Form-submit" %>
+          <% else %>
+            <%= form.submit "Sign-up!", class: "Form-submit" %>
+          <% end %>
         </div>
       <% end %>
-      <div class="Form-section">
-        <p class="FormInput-label">Password: </p>
-        <%= form.password_field :password, class: "Form-input" %>
-      </div>
-      <div class="Form-section">
-        <% if @current_user %>
-          <%= form.submit "Create", class: "Form-submit" %>
-        <% else %>
-          <%= form.submit "Sign-up!", class: "Form-submit" %>
-        <% end %>
-      </div>
-    <% end %>
-  </section>
+    </section>
+  </div>
 </div>

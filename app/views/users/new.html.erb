@@ -15,14 +15,12 @@
         </ul>
       </nav>
     <% end %>
-    <div class="UserForm">
-      <p class="UsersNew-title">
-        <% if @current_user %>
-          Add Member
-        <% else %>
-          Sign-Up!
-        <% end %>
-      </p>
+    <div class="Center UsersNew-title">
+      <% if @current_user %>
+        Add Member
+      <% else %>
+        Sign-Up!
+      <% end %>
     </div>
     <% if flash[:error] %>
       <p class="Flash-error">

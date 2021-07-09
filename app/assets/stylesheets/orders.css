@@ -18,9 +18,19 @@
   padding: 10px;
 }
 
-.OrderHistory-table td {
-  border: 1px solid #ededed;
-  padding: 5px;
+.OrderHistory-table tr {
+  border: 2px solid #000000;
+  color: #aaaaaa;
+  background-color: #2e2c2c;
+}
+
+.OrderHistory-table tr:hover {
+  color: #fff;
+  background-color: #464343;
+}
+
+.OrderHistory-table a {
+  color: #ffffff;
 }
 
 .OrderHistory-table {
@@ -28,12 +38,8 @@
   width: 90%;
 }
 
-.OrderHistory-table tr:nth-child(even) {
-  background-color: #ededed;
-}
-
-.OrderHistory-table tr:nth-child(odd) {
-  background-color: #aaaaaa;
+.OrderHistory-table td {
+  padding: 5px;
 }
 
 .FormField {

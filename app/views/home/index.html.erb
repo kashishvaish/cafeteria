@@ -8,6 +8,9 @@
         <li>
           <%= link_to "Sign-in", new_sessions_path, class: "Navbar-link" %>
         </li>
+        <li>
+          <%= link_to "Our Menu", "#Menu", class: "Navbar-link" %>
+        </li>
       </ul>
     <% end %>
   </nav>
@@ -17,4 +20,28 @@
       <%= link_to "Order Now", "/menu", method: "get", class: "HomeOrder-button" %>
     <% end %>
   </div>
+</div>
+<div class="Home-menu Center" id="Menu">
+  <div class="HomeMenu-title">
+    Our Menu
+  </div>
+  <% MenuCategory.all().order_by_id.each do |category| %>
+    <div class="MenuCategory-container">
+      <div class="MenuPage-category">
+        <%= category.name %>
+        <% if category.status == "inactive" %>
+          <div class="Inactive">Inactive</div>
+        <% end %>
+      </div>
+      <% category.menu_items.order_by_id.each do |item| %>
+        <div class="MenuPageItem">
+          <div class="MenuPageItem-name"><%= item.name %></div>
+        </div>
+        <div class="MenuPageItem-details">
+          <div class="MenuItem-description"><%= item.description %></div>
+          <div class="MenuItem-price">Rs. <%= item.price %></div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>

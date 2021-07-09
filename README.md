@@ -2,6 +2,18 @@
 
 ## A Cafeteria Management Application built on Rails.
 
+## Link to live application:
+### https://gourmet-cafeteria.herokuapp.com/
+
+#### Owner account credentials:
+##### Email: owner@gmail.com
+##### Password: owner
+
+#### Billing-Clerk account credentials:
+##### Email: bc1@gmail.com
+##### Password: bc1
+
+
 ## FEATURES:
 
 ### 1. Support multiple user roles: 

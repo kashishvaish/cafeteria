@@ -1,24 +1,24 @@
-<div class="MenuPageMain">
-  <div class="OrderPage-container">
+<div class="OrderPage-container">
+  <div class="OrderPage-filter">
     <div class="Form">
       <div class="OrderPage-heading">
         Sales Report
       </div>
       <%= form_with url: sales_report_path, method: "get" do |form| %>
-        <div class="Form-field">
+        <div class="FormField">
           From:
-          <%= form.date_field :start_date, required: true %>
+          <%= form.date_field :start_date, required: true, class: "FormInput" %>
         </div>
-        <div class="Form-field">
+        <div class="FormField">
           To:
-          <%= form.date_field :end_date, required: true %>
+          <%= form.date_field :end_date, required: true, class: "FormInput" %>
         </div>
-        <div class="Form-field">
+        <div class="FormField">
           User ID:
-          <%= form.number_field :user_id %>
+          <%= form.number_field :user_id, class: "FormInput" %>
         </div>
-        <div class="Form-field">
-          <%= form.submit "Generate Report" %>
+        <div class="FormField">
+          <%= form.submit "Generate Report", class: "AddToCart" %>
         </div>
       <% end %>
     </div>
@@ -28,41 +28,45 @@
         Search Invoice:
       </div>
       <%= form_with url: sales_report_path, method: "get" do |form| %>
-        <div class="Form-field">
+        <div class="FormField">
           Order ID:
-          <%= form.number_field :order_id, required: true %>
+          <%= form.number_field :order_id, required: true, class: "FormInput" %>
         </div>
-        <div class="Form-field">
-          <%= form.submit "Search" %>
+        <div class="FormField">
+          <%= form.submit "Search", class: "AddToCart" %>
         </div>
       <% end %>
     </div>
-    <div class="OrderPage-body">
-      <div class="title">
-      From: <%= @start_date %>
-      To: <%= @end_date %>
-
-      Total Sale: <%= @total_sale %>
-      <table class="OrderHistory-table">
-        <tr>
-          <th>Order ID</th>
-          <th>User ID</th>
-          <th>User Name</th>
-          <th>Order Date</th>
-          <th>Order Total</th>
-          <th>Order Details</th>
-        </tr>
-        <% @orders.each do |order| %>
-          <tr>
-            <td><%= order.id %></td>
-            <td><%= order.user_id %></td>
-            <td><%= link_to order.user.name, controller: "users", action: "show", id: order.user_id %></td>
-            <td><%= order.created_at %></td>
-            <td><%= order.total %></td>
-            <td><%= link_to "Order details", controller: "orders", action: "show", id: order.id %></td>
-          </tr>
-        <% end %>
-      </table>
+  </div>
+  <div class="OrderPage-body">
+    <div class="ReportHeading">
+      FROM: <span><%= @start_date %></span>
     </div>
+    <div class="ReportHeading">
+      TO: <span><%= @end_date %></span>
+    </div>
+    <div class="ReportHeading">
+      TOTAL SALE: <span><%= @total_sale %></span>
+    </div>
+    <table class="OrderHistory-table">
+      <tr>
+        <th>Order ID</th>
+        <th>User ID</th>
+        <th>User Name</th>
+        <th>Order Date</th>
+        <th>Order Total</th>
+        <th>Order Details</th>
+      </tr>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.id %></td>
+          <td><%= order.user_id %></td>
+          <td><%= link_to order.user.name, controller: "users", action: "show", id: order.user_id %></td>
+          <td><%= order.created_at %></td>
+          <td><%= order.total %></td>
+          <td><%= link_to "Order details", controller: "orders", action: "show", id: order.id %></td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>

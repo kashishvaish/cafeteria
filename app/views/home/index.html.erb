@@ -13,7 +13,7 @@
   </nav>
   <div class="Company-title">Gourmet<br/> Cafeteria</div>
   <div class="HomeOrder">
-    <% if @current_user == nil || @current_user.role != "owner" %>
+    <% if @current_user == nil || @current_user.customer? || @current_user.billing_clerk? %>
       <%= link_to "Order Now", "/menu", method: "get", class: "HomeOrder-button" %>
     <% end %>
   </div>

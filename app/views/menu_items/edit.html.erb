@@ -1,23 +1,28 @@
-<div class="NewUsers-container">
-  <p class="NewUsers-title">
+<div class="Center">
+  <p class="FormHeader">
     Edit Menu Item
   </p>
-    <%= form_with url: menu_items_path + "/#{@item.id}", method: "put" do |form| %>
-      <div class="Form-section">
-        <p class="FormInput-label">Name: </p>
-        <%= form.text_field :name, class: "Form-input", value: @item.name %>
-      </div>
-      <div class="Form-section">
-        <p class="FormInput-label">Description: </p>
-        <%= form.text_field :description, class: "Form-input", value: @item.description %>
-      </div>
-      <div class="Form-section">
-        <p class="FormInput-label">Price: </p>
-        <%= form.number_field :price, class: "Form-input", value: @item.price %>
-      </div>
-
-      <div class="Form-section">
-        <%= form.submit "Update", class: "Form-submit" %>
-      </div>
-    <% end %>
+  <%= form_with url: menu_items_path + "/#{@item.id}", method: "put" do |form| %>
+    <div class="Form-section">
+      <p class="FormField">
+        Name:
+        <%= form.text_field :name, class: "FormInput", value: @item.name %>
+      </p>
+    </div>
+    <div class="Form-section">
+      <p class="FormField">
+        Description:
+        <%= form.text_field :description, class: "FormInput", value: @item.description %>
+      </p>
+    </div>
+    <div class="Form-section">
+      <p class="FormField">
+        Price:
+        <%= form.number_field :price, class: "FormInput", value: @item.price %>
+      </p>
+    </div>
+    <div class="Form-section">
+      <%= form.submit "Update", class: "CheckoutButton" %>
+    </div>
+  <% end %>
 </div>

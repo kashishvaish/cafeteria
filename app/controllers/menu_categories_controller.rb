@@ -1,34 +1,44 @@
 class MenuCategoriesController < ApplicationController
   def create
-    MenuCategory.create(
-      name: params[:name],
-      status: "active",
-    )
-    redirect_to request.referrer
+    if current_user.owner?
+      MenuCategory.create(
+        name: params[:name],
+        status: "active",
+      )
+      redirect_to request.referrer
+    end
   end
 
   def edit
-    id = params[:id]
-    @category = MenuCategory.find(id)
+    if current_user.owner?
+      id = params[:id]
+      @category = MenuCategory.find(id)
+    end
   end
 
   def update
-    id = params[:id]
-    category = MenuCategory.find(id)
-    category.update(name: params[:name])
-    redirect_to "/menu_admin"
+    if current_user.owner?
+      id = params[:id]
+      category = MenuCategory.find(id)
+      category.update(name: params[:name])
+      redirect_to "/menu_admin"
+    end
   end
 
   def destroy
-    id = params[:id]
-    category = MenuCategory.find(id)
-    category.destroy
-    redirect_to request.referrer
+    if current_user.owner?
+      id = params[:id]
+      category = MenuCategory.find(id)
+      category.destroy
+      redirect_to request.referrer
+    end
   end
 
   def change_status
-    category = MenuCategory.find(params[:id])
-    category.update(status: params[:status])
-    redirect_to request.referrer
+    if current_user.owner?
+      category = MenuCategory.find(params[:id])
+      category.update(status: params[:status])
+      redirect_to request.referrer
+    end
   end
 end

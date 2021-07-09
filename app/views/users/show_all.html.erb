@@ -3,17 +3,12 @@
     <div class="OrderPage-heading">
       Users
     </div>
-    <div class="Users-filter">
-      <div class="Form-section">
-        <%= form_with url: "/view_users", method: "get" do |form| %>
-          <p class="FormInput-label">Role: </p>
-          <%= form.radio_button :role, "customer", class: "Form-input", onclick: "this.form.submit()" %> Customer
-          <%= form.radio_button :role, "billing-clerk", class: "Form-input", onclick: "this.form.submit()" %> Billing-clerk
-          <%= form.radio_button :role, "owner", class: "Form-input", onclick: "this.form.submit()" %> Owner
-        <% end %>
-      </div>
-      <%= button_to "Show All Users", "/view_users", method: "get" %>
-    <div>
+    <div class="OrderPage-filter">
+      <%= button_to "Customer", "/view_users", params: { :role => "customer" }, method: "get", class: "AddToCart" %>
+      <%= button_to "Billing-Clerk", "/view_users", params: { :role => "billing-clerk" }, method: "get", class: "AddToCart" %>
+      <%= button_to "Owner", "/view_users", params: { :role => "owner" }, method: "get", class: "AddToCart" %>
+      <%= button_to "Show All Users", "/view_users", method: "get", class: "AddToCart" %>
+    </div>
     <div class="OrderPage-body">
       <table class="OrderHistory-table">
         <tr>

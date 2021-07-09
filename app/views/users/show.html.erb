@@ -19,7 +19,7 @@
         Address: <%= @user.address %>
       <% end %>
     </div>
-    <% if @user.role == "customer" %>
+    <% if @user.customer? %>
       <div class="OrderPage-container">
         <div class="OrderPage-heading">
           Orders

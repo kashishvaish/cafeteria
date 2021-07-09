@@ -1,17 +1,21 @@
 <div class="UsersPageMain">
-  <%= image_tag "drinks.jpg", class: "Users-bg" %>
+  <% if @current_user == nil %>
+    <%= image_tag "drinks.jpg", class: "Users-bg" %>
+  <% end %>
   <div class="Users-container">
-    <nav class="navbar">
-      <ul>
-        <li>
-          <%= link_to "Sign-in", new_sessions_path, class: "Navbar-link" %>
-        </li>
-        <li>
-          <%= link_to "Home", "/", class: "Navbar-link" %>
-        </li>
-      </ul>
-    </nav>
-    <p class="Users-title">
+    <% if @current_user == nil %>
+      <nav class="navbar">
+        <ul>
+          <li>
+            <%= link_to "Sign-in", new_sessions_path, class: "Navbar-link" %>
+          </li>
+          <li>
+            <%= link_to "Home", "/", class: "Navbar-link" %>
+          </li>
+        </ul>
+      </nav>
+    <% end %>
+    <p class="UsersNew-title">
 
       <% if @current_user %>
         Add Member
@@ -30,11 +34,13 @@
         <p class="FormInput-label">Email: </p>
         <%= form.email_field :email, class: "Form-input" %>
       </div>
-      <% if @current_user && @current_user.role == "owner" %>
+      <% if @current_user && @current_user.owner? %>
         <div class="Form-section">
           <p class="FormInput-label">Role: </p>
-          <%= form.radio_button :role, "billing-clerk", class: "Form-input", checked: true %> Billing-clerk
-          <%= form.radio_button :role, "owner", class: "Form-input" %> Owner
+          <%= form.radio_button :role, "billing-clerk", class: "Form-input", checked: true %>
+          <span class="FormField">Billing-clerk<span>
+          <%= form.radio_button :role, "owner", class: "Form-input" %>
+          <span class="FormField">Owner<span>
         </div>
       <% end %>
       <div class="Form-section">

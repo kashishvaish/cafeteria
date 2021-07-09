@@ -3,19 +3,23 @@ class UsersController < ApplicationController
   skip_before_action :user_cart
 
   def show_all
-    @users = User.all()
-    @users = @users.filter_by_role(params[:role]) if params[:role].present?
-    @users = @users.filter_by_role(params[:state]) if params[:state].present?
-    render "show_all"
+    if current_user.owner?
+      @users = User.all()
+      @users = @users.filter_by_role(params[:role]) if params[:role].present?
+      @users = @users.filter_by_role(params[:state]) if params[:state].present?
+      render "show_all"
+    end
   end
 
   def show
-    @user = User.find(params[:id])
+    if current_user.owner? || current_user.billing_clerk?
+      @user = User.find(params[:id])
+    end
   end
 
   def new
     if current_user
-      if current_user.role == "owner"
+      if current_user.owner?
         render "users/new"
       else
         redirect_to "/"
@@ -27,7 +31,7 @@ class UsersController < ApplicationController
 
   def create
     role = "customer"
-    if current_user && current_user.role == "owner"
+    if current_user && current_user.owner?
       role = params[:role]
     end
     user = User.new(
@@ -47,9 +51,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    id = params[:id]
-    user = User.find(id)
-    user.destroy
-    redirect_to request.referrer
+    if current_user.owner?
+      id = params[:id]
+      user = User.find(id)
+      user.destroy
+      redirect_to request.referrer
+    end
   end
 end

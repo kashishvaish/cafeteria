@@ -4,13 +4,7 @@ class HomeController < ApplicationController
 
   def index
     if current_user
-      if current_user.role == "customer"
-        render "index"
-      elsif current_user.role == "billing-clerk"
-        render "billing_clerk_home"
-      elsif current_user.role == "owner"
-        render "index"
-      end
+      render "index"
     else
       render "index"
     end

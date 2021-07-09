@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def show_all
-    if current_user.role == "billing-clerk" or current_user.role == "owner"
+    if current_user.billing_clerk? || current_user.owner?
       if params[:filter] == "all"
         @orders = Order.order_by_id
       elsif params[:filter] == "pending"
@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
   end
 
   def generate_report
-    if current_user.role == "owner"
+    if current_user.owner?
       if params[:order_id]
         @orders = Order.where(id: params[:order_id])
         render "generate_report"
@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    if current_user.role == "customer"
+    if current_user.customer?
       user_id = current_user.id
       current_user.update(
         state: params[:state],
@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
         address: params[:address],
         contact_no: params[:contact_no],
       )
-    elsif current_user.role == "billing-clerk"
+    elsif current_user.billing_clerk?
       user_id = 2
     end
 
@@ -73,8 +73,10 @@ class OrdersController < ApplicationController
   end
 
   def update
-    order = Order.find(params[:id])
-    order.update(status: "delivered")
-    redirect_to request.referrer
+    if current_user.billing_clerk? || current_user.owner?
+      order = Order.find(params[:id])
+      order.update(status: "delivered")
+      redirect_to request.referrer
+    end
   end
 end

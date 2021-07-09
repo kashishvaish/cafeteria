@@ -134,3 +134,14 @@
 .Category-status {
   color: #4acfac;
 }
+
+.Center {
+  text-align: center;
+}
+
+.FormHeader {
+  color: #da0037;
+  font-size: 20px;
+  font-weight: bolder;
+  padding: 20px 0px;
+}

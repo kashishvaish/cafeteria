@@ -17,7 +17,7 @@
       <div class="TotalAmount">Rs. <%= @user_cart.total %></div>
     </div>
     <%= form_with(url: "/orders", method: "post") do |f| %>
-      <% if @current_user.role == "customer" %>
+      <% if @current_user.customer? %>
         <p class="FormField">State:
         <%= f.text_field :state, value: @current_user.state, required: true, class: "FormInput" %>
         </p>

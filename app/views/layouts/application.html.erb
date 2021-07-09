@@ -19,15 +19,18 @@
             <li>
               <%= link_to "Sign-out", destroy_sessions_path, method: "delete", class: "Navbar-link Red" %>
             </li>
-            <% if @current_user.role == "customer" %>
+            <% if @current_user.customer? %>
               <li><%= link_to "My Orders", "/myorders", method: "get", class: "Navbar-link" %></li>
               <li><%= link_to "Menu", "/menu", method: "get", class: "Navbar-link" %></li>
-            <% elsif @current_user.role == "owner" %>
+            <% elsif @current_user.owner? %>
               <li><%= link_to "Add Members", new_user_path, class: "Navbar-link" %>
               <li><%= link_to "View Users", "/view_users", method: "get", class: "Navbar-link" %></li>
               <li><%= link_to "Sales Report", "/sales_report", method: "get", class: "Navbar-link" %></li>
               <li><%= link_to "Orders", "/all_orders/all", method: "get", class: "Navbar-link" %></li>
               <li><%= link_to "Menu", "/menu_admin", method: "get", class: "Navbar-link" %></li>
+            <% elsif @current_user.billing_clerk? %>
+              <li><%= link_to "New Order", "/menu", method: "get", class: "Navbar-link" %></li>
+              <li><%= link_to "Orders", "/all_orders/all", method: "get", class: "Navbar-link" %></li>
             <% end %>
             <li class="username">
               <%= @current_user.name %>

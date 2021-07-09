@@ -1,15 +1,16 @@
-<div class="NewUsers-container">
-  <p class="NewUsers-title">
+<div class="Center">
+  <p class="FormHeader">
     Rename Menu Category
   </p>
     <%= form_with url: menu_categories_path + "/#{@category.id}", method: "put" do |form| %>
       <div class="Form-section">
-        <p class="FormInput-label">Name: </p>
-        <%= form.text_field :name, class: "Form-input", value: @category.name %>
+        <p class="FormField">Name:
+        <%= form.text_field :name, class: "Form-input", value: @category.name, class: "FormInput" %>
+        </p>
       </div>
 
       <div class="Form-section">
-        <%= form.submit "Rename", class: "Form-submit" %>
+        <%= form.submit "Rename", class: "CheckoutButton" %>
       </div>
     <% end %>
 </div>

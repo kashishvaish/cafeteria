@@ -7,11 +7,11 @@
       <%= form.submit "Add Category", class: "AddToCart" %>
     <% end %>
   </div>
-  <% MenuCategory.all().each do |category| %>
+  <% MenuCategory.all().order_by_id.each do |category| %>
     <div class="MenuPage-category">
       <%= category.name %>
       <%= button_to "Rename", "menu_categories/#{category.id}/edit", method: "get", class: "AddToCart" %>
-      <%= button_to "Delete", "menu_categories/#{category.id}", method: "delete", class: "AddToCart" %>
+      <%= button_to "Delete", "menu_categories/#{category.id}", method: "delete", class: "AddToCart", data: { confirm: "Are you sure you want to delete #{category.name}?" } %>
       <%= button_to "Add Item", "menu_items/new", params: { :id => category.id }, method: "get", class: "AddToCart" %>
     </div>
     <div class="Category-status">
@@ -22,12 +22,12 @@
         <%= button_to "Mark as Active", edit_category_status_path, params: { :id => category.id, :status => "active" }, method: "patch", class: "AddToCart" %>
       <% end %>
     </div>
-    <% category.menu_items.each do |item| %>
+    <% category.menu_items.order_by_id.each do |item| %>
       <div class="MenuPageItem">
         <div class="MenuPageItem-name"><%= item.name %></div>
         <div class="Menuitem-quantityButtons">
           <%= button_to "Edit", "menu_items/#{item.id}/edit", method: "get", class: "AddToCart" %>
-          <%= button_to "Delete", "menu_items/#{item.id}", method: "delete", class: "AddToCart" %>
+          <%= button_to "Delete", "menu_items/#{item.id}", method: "delete", class: "AddToCart", data: { confirm: "Are you sure you want to delete #{item.name}?" } %>
         </div>
       </div>
       <div class="MenuPageItem-details">

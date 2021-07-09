@@ -39,6 +39,18 @@
           </ul>
         </nav>
       </div>
+      <% if flash[:error] %>
+        <p class="Flash-error">
+          <%= flash[:error] %>
+        </p>
+      <% end %>
+
+      <% if flash[:notice] %>
+        <p class="Flash-notice">
+          <%= flash[:notice] %>
+        </p>
+      <% end %>
+
     <% end %>
     <%= yield %>
   </body>

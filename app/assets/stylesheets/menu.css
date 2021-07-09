@@ -116,6 +116,13 @@
   color: #ffffff;
 }
 
+.RedButton {
+  background-color: #ab0e14;
+  padding: 10px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
 .AddCategory-title {
   color: #ffa48e;
   font-size: 20px;

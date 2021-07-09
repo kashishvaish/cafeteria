@@ -42,20 +42,28 @@ class UsersController < ApplicationController
     )
     if user.save
       if current_user
-        redirect_to home_path
+        flash[:notice] = "New User Created Successfully!"
+        redirect_to request.referrer
       else
         session[:current_user_id] = user.id
         redirect_to new_user_path
       end
+    else
+      flash[:error] = user.errors.full_messages.join(", ")
+      redirect_to new_user_path
     end
   end
 
   def destroy
     if current_user.owner?
       id = params[:id]
-      user = User.find(id)
-      user.destroy
-      redirect_to request.referrer
+      if id != 1 && id != 2
+        user = User.find(id)
+        user.destroy
+        redirect_to request.referrer
+      else
+        redirect_to request.referrer
+      end
     end
   end
 end

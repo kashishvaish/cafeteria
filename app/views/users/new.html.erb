@@ -23,7 +23,11 @@
         Sign-Up!
       <% end %>
     </p>
-
+    <% if flash[:error] %>
+      <p class="Flash-error">
+        <%= flash[:error] %>
+      </p>
+    <% end %>
   <section class="UsersNew">
     <%= form_with url: users_path do |form| %>
       <div class="Form-section">

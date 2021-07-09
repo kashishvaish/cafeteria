@@ -42,8 +42,8 @@
                 <td><%= order.status %></td>
                 <td><%= link_to "Order details", controller: "orders", action: "show", id: order.id %></td>
                 <td>
-                  <%= form_with(url: "/orders/#{order.id}", method: "put") do %>
-                    <%= button_to "Mark as Delivered", onclick: "this.form.submit()" %>
+                  <% if order.pending %>
+                    <%= button_to "Mark as Delivered", "/orders/#{order.id}", method: "put", class: "CheckoutButton", onclick: "this.form.submit()" %>
                   <% end %>
                 </td>
               </tr>

@@ -1,6 +1,6 @@
 <div class="MenuPage-container">
   <div class="Menu">
-    <% MenuCategory.all().each do |category| %>
+    <% MenuCategory.all().order_by_id.each do |category| %>
       <div class="MenuCategory-container">
         <div class="MenuPage-category">
           <%= category.name %>
@@ -8,7 +8,7 @@
             <div class="Inactive">Inactive</div>
           <% end %>
         </div>
-        <% category.menu_items.each do |item| %>
+        <% category.menu_items.order_by_id.each do |item| %>
           <div class="MenuPageItem">
             <div class="MenuPageItem-name"><%= item.name %></div>
             <% if category.status == "active" %>

@@ -14,8 +14,13 @@ class MenuItemsController < ApplicationController
         description: params[:description],
         price: params[:price],
       )
-      item.save()
-      redirect_to "/menu_admin"
+      if item.save()
+        flash[:notice] = "New Item Added Successfully!"
+        redirect_to "/menu_admin"
+      else
+        flash[:error] = item.errors.full_messages.join(", ")
+        redirect_to request.referrer
+      end
     end
   end
 
@@ -30,12 +35,17 @@ class MenuItemsController < ApplicationController
     if current_user.owner?
       id = params[:id]
       item = MenuItem.find(id)
-      item.update(
-        name: params[:name],
-        description: params[:description],
-        price: params[:price],
-      )
-      redirect_to "/menu_admin"
+      item.name = params[:name]
+      item.description = params[:description]
+      item.price = params[:price]
+
+      if item.save
+        flash[:notice] = "Item Updated Successfully!"
+        redirect_to "/menu_admin"
+      else
+        flash[:error] = item.errors.full_messages.join(", ")
+        redirect_to request.referrer
+      end
     end
   end
 

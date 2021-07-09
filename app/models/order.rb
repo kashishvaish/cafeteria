@@ -5,9 +5,17 @@ class Order < ActiveRecord::Base
   def total
     sum = 0
     order_items.each do |item|
-      sum += item.menu_item.price
+      sum += item.menu_item_price
     end
     return sum
+  end
+
+  def delivered
+    status = "delivered"
+  end
+
+  def pending
+    status != "delivered"
   end
 
   def self.total_sale

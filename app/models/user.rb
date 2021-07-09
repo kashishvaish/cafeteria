@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :email, uniqueness: true
+  validates :role, presence: true
+
   scope :filter_by_role, ->(role) { where role: role }
 
   has_secure_password

@@ -12,7 +12,7 @@
       <br/>
     </div>
     <div class="SubHeading">
-      <% if @current_order.user.id != 2 %>
+      <% if @current_order.user && @current_order.user.id != 2 %>
         Delivery State: <%= @current_order.user.state %>
         <br/>
         Delivery City: <%= @current_order.user.city %>

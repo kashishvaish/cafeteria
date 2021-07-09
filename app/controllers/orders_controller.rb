@@ -54,22 +54,30 @@ class OrdersController < ApplicationController
       user_id = 2
     end
 
-    order = Order.create(
+    order = Order.new(
       user_id: user_id,
       status: "pending delivery",
     )
 
-    user_cart.cart_items.each do |item|
-      OrderItem.create(
-        order_id: order.id,
-        menu_item_id: item.menu_item.id,
-        menu_item_name: item.menu_item.name,
-        menu_item_price: item.menu_item.price,
-      )
-      item.destroy
+    if order.save
+      user_cart.cart_items.each do |item|
+        OrderItem.create(
+          order_id: order.id,
+          menu_item_id: item.menu_item.id,
+          menu_item_name: item.menu_item.name,
+          menu_item_price: item.menu_item.price,
+        )
+        item.destroy
+      end
+      user_cart.destroy
+      if current_user.billing_clerk?
+        flash[:notice] = "Order Placed Successfully With ID: #{order.id}"
+        redirect_to "/menu"
+      else
+        flash[:notice] = "Order Placed Successfully!"
+        redirect_to "/menu"
+      end
     end
-    user_cart.destroy
-    redirect_to "/menu"
   end
 
   def update

@@ -12,6 +12,11 @@
       </ul>
     </nav>
     <p class="Users-title">Sign-in!</p>
+    <% if flash[:error] %>
+      <p class="Flash-error">
+        <%= flash[:error] %>
+      </p>
+    <% end %>
     <section class="UsersNew">
       <%= form_with url: sessions_path do |form| %>
         <div class="Form-section">

@@ -25,14 +25,20 @@
           <tr>
             <td><%= order.id %></td>
             <td><%= order.user_id %></td>
-            <td><%= link_to order.user.name, controller: "users", action: "show", id: order.user_id %></td>
+            <td>
+              <% if order.user %>
+                <%= link_to order.user.name, controller: "users", action: "show", id: order.user_id %>
+              <% else %>
+                <span class="Red">Deleted User</span>
+              <% end %>
+            </td>
             <td><%= order.created_at %></td>
             <td><%= order.total %></td>
             <td><%= order.status %></td>
             <td><%= link_to "Order details", controller: "orders", action: "show", id: order.id %></td>
             <td>
-              <%= form_with(url: "/orders/#{order.id}", method: "put") do %>
-                <%= button_to "Mark as Delivered", onclick: "this.form.submit()" %>
+              <% if order.pending %>
+                <%= button_to "Mark as Delivered", "/orders/#{order.id}", method: "put", class: "CheckoutButton", onclick: "this.form.submit()" %>
               <% end %>
             </td>
           </tr>

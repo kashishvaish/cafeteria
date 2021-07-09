@@ -16,3 +16,21 @@
 .username {
   color: #f8d614;
 }
+
+.Flash-error {
+  color: #e03330;
+  background-color: #ebc4c4;
+  border-color: #ec7185;
+  padding: 5px;
+  margin: 20px auto;
+  width: 80%;
+}
+
+.Flash-notice {
+  color: #07323d;
+  background-color: #4acfac;
+  border-color: #2ba6c5;
+  padding: 5px;
+  margin: 20px auto;
+  width: 80%;
+}

@@ -1,11 +1,17 @@
 class MenuCategoriesController < ApplicationController
   def create
     if current_user.owner?
-      MenuCategory.create(
+      category = MenuCategory.new(
         name: params[:name],
         status: "active",
       )
-      redirect_to request.referrer
+      if category.save
+        flash[:notice] = "New Category Created Successfully!"
+        redirect_to request.referrer
+      else
+        flash[:error] = category.errors.full_messages.join(", ")
+        redirect_to request.referrer
+      end
     end
   end
 
@@ -20,8 +26,14 @@ class MenuCategoriesController < ApplicationController
     if current_user.owner?
       id = params[:id]
       category = MenuCategory.find(id)
-      category.update(name: params[:name])
-      redirect_to "/menu_admin"
+      category.name = params[:name]
+      if category.save
+        flash[:notice] = "Menu Category Renamed Successfully!"
+        redirect_to "/menu_admin"
+      else
+        flash[:error] = category.errors.full_messages.join(", ")
+        redirect_to request.referrer
+      end
     end
   end
 

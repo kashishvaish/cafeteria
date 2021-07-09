@@ -1,24 +1,18 @@
-# README
+# Gourmet Cafeteria
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## A Cafeteria Management Application built on Rails.
 
-Things you may want to cover:
+## FEATURES:
 
-* Ruby version
+### 1. Support multiple user roles: 
+##### a) Customer
+##### b) Billing-Clerk
+##### c) Owner
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 2. Customers can:
+##### - see the menu
+##### - sign up/ sign in
+##### - add items to their cart
+##### - place order
+##### - see their orders history
+##### - see the status of their orders

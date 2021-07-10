@@ -13,6 +13,9 @@
 ##### Email: bc1@gmail.com
 ##### Password: bc1
 
+#### Sample customer account credentials:
+##### Email: kashish@gmail.com
+##### Password: kashish
 
 ## FEATURES:
 

@@ -1,24 +1,54 @@
-# README
+# Gourmet Cafeteria
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## A Cafeteria Management Application built on Rails.
 
-Things you may want to cover:
+## Link to live application:
+### https://gourmet-cafeteria.herokuapp.com/
 
-* Ruby version
+#### Owner account credentials:
+##### Email: owner@gmail.com
+##### Password: owner
 
-* System dependencies
+#### Billing-Clerk account credentials:
+##### Email: bc1@gmail.com
+##### Password: bc1
 
-* Configuration
 
-* Database creation
+## FEATURES:
 
-* Database initialization
+### 1. Support multiple user roles: 
+##### a) Customer
+##### b) Billing-Clerk
+##### c) Owner
 
-* How to run the test suite
+### 2. Customers can:
+##### - see the menu
+##### - sign up/ sign in
+##### - add items to their cart
+##### - place order
+##### - see their orders history
+##### - see the status of their orders
 
-* Services (job queues, cache servers, search engines, etc.)
+### 3. Owners can:
+##### - edit the menu
+##### - see all the orders
+##### - see all pending orders
+##### - see all the users
+##### - create billing-clerk accounts
+##### - create other owners
+##### - see sales report between given date range
+##### - see a particular users orders in a particular date range
+##### - see a particular order details
+##### - see a particular customer details
+##### - remove a user
+##### - no one can sign-up as an owner, only owners can create other owners
+##### - the application comes with a pre-built owner account
 
-* Deployment instructions
+### 4. Billing-Clerks can:
+##### - see all orders
+##### - see all pending orders
+##### - change the status of orders from pending to delivered
+##### - create new order for offline customers
+##### - all the orders created by billing-clerks go to the account of a pre-built "Walk-in customer"
+##### - no one can sign-up as a billing-clerk, billing-clerks are created by the owner
 
-* ...

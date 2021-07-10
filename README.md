@@ -52,3 +52,34 @@
 ##### - all the orders created by billing-clerks go to the account of a pre-built "Walk-in customer"
 ##### - no one can sign-up as a billing-clerk, billing-clerks are created by the owner
 
+## Screens:
+#### 1. HomePage
+![homepage](https://github.com/kashishvaish/cafeteria/blob/main/images/landingpage.jpg?raw=true)
+#### 2. Menu
+##### This menu is visible even if the user is not logged in.
+![homepage](https://github.com/kashishvaish/cafeteria/blob/main/images/landingpage-menu.jpg?raw=true)
+#### 3. Sign-up
+![homepage](https://github.com/kashishvaish/cafeteria/blob/main/images/sign-up.jpg?raw=true)
+#### 4. Sign-in
+![homepage](https://github.com/kashishvaish/cafeteria/blob/main/images/sign-in.jpg?raw=true)
+#### 5. Menu Page
+##### When customers log-in they can go to the menu page and add items to their cart.   
+![homepage](https://github.com/kashishvaish/cafeteria/blob/main/images/menu.jpg?raw=true)
+#### 6. CheckOut Page
+##### To confirm the order and take delivery location details.
+![homepage](https://github.com/kashishvaish/cafeteria/blob/main/images/order.jpg?raw=true)
+#### 7. Orders History
+##### Customers can see their orders history
+![homepage](https://github.com/kashishvaish/cafeteria/blob/main/images/order-history.jpg?raw=true)
+#### 8. Order Status
+##### Customers can see the details of their orders
+![homepage](https://github.com/kashishvaish/cafeteria/blob/main/images/order-details.jpg?raw=true)
+#### 9. Edit Menu - ONLY FOR OWNER
+##### Owner can edit the menu
+![homepage](https://github.com/kashishvaish/cafeteria/blob/main/images/edit-menu.jpg?raw=true)
+#### 9. See all users - ONLY FOR OWNER
+##### Owner can see all the users
+![homepage](https://github.com/kashishvaish/cafeteria/blob/main/images/users.jpg?raw=true)
+#### 10. All Orders - ONLY OWNER AND BILLING CLERK
+##### Owner and Billing-clerks can see all the order - Pending, Delivered, and also mark pending orders as Delivered.
+![homepage](https://github.com/kashishvaish/cafeteria/blob/main/images/all-orders.jpg?raw=true)
